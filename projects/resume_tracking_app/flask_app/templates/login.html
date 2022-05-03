@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Tracker</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index_style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="main">
+        <div id="title">
+            <h1>Resume Tracker</h1>
+        </div>
+        <form action="#" method="POST">
+            <div id="register">
+                <h2>Login</h2>
+            </div>
+            <label for="">Email</label>
+            <input type="email">
+            <label for="">Password</label>
+            <input type="password">
+            <button type="submit">Login</button>
+            <a href="/">Not Registered Yet?</a>
+            <a href="/reset_email">Forgot Password</a>
+        </form>
+    </div>
+</body>
+</html>
