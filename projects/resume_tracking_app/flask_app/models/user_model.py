@@ -33,7 +33,9 @@ class User:
 
     @classmethod
     def get_by_email(cls, data):
+        is_valid = True
         query = "SELECT * FROM users WHERE email = %(email)s;"
+        print(query, "*"*60)
         results = connectToMySQL(cls.db).query_db(query, data)
         if len(results) < 1:
             return False

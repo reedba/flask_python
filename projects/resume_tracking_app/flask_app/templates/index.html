@@ -15,7 +15,7 @@
         <div id="title">
             <h1>Resume Tracker</h1>
         </div>
-        <form action="#" method="POST">
+        <form action="/register" method="POST">
             <div id="register">
                 <h2>Create Account</h2>
             </div>
@@ -31,6 +31,15 @@
             <input type="password" name="confirm_password">
             <button type="submit">Register</button>
             <a href="/login_page">Already Registered</a>
+            {% with messages = get_flashed_messages(category_filter=['register']) %}
+        {% if messages %}
+        <div role="alert">
+                {% for message in messages %}
+                <p style="color: red;">{{message}}</p>
+                {% endfor %}
+        </div>
+        {% endif %}
+    {% endwith %}
         </form>
     </div>
 </body>

@@ -15,17 +15,26 @@
         <div id="title">
             <h1>Resume Tracker</h1>
         </div>
-        <form action="#" method="POST">
+        <form action="/login" method="POST">
             <div id="register">
                 <h2>Login</h2>
             </div>
             <label for="">Email</label>
-            <input type="email">
+            <input type="email" name="email">
             <label for="">Password</label>
-            <input type="password">
+            <input type="password" name="password">
             <button type="submit">Login</button>
             <a href="/">Not Registered Yet?</a>
             <a href="/reset_email">Forgot Password</a>
+            {% with messages = get_flashed_messages(category_filter=['login']) %}
+                {% if messages %}
+                <div>
+                        {% for message in messages %}
+                        <p style="color: red;">{{message}}</p>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
         </form>
     </div>
 </body>

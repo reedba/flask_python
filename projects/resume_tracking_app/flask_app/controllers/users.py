@@ -35,7 +35,7 @@ def register():
     id = User.save(data)
     session['user_id'] = id
 
-    return redirect('/dashboard')
+    return redirect('/login')
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -43,10 +43,10 @@ def login():
 
     if not user:
         flash("Invalid Email", "login")
-        return redirect('/')
+        return redirect('/login')
     if not bcrypt.check_password_hash(user.password, request.form['password']):
         flash("Invalid Password", "login")
-        return redirect('/')
+        return redirect('/login')
     session['user_id'] = user.id
     return redirect('/dashboard')
 
