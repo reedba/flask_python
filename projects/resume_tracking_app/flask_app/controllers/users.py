@@ -2,7 +2,35 @@ from flask_bcrypt import Bcrypt
 from flask import render_template, flash, session, request, redirect
 from flask_app import app
 from flask_app.models.user_model import User
+from flask_mail import Mail, Message
+
 bcrypt = Bcrypt(app)
+mail = Mail(app)
+
+
+#Start of email authentication
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'brandon.andrew.reed@gmail.com'
+app.config['MAIL_PASSWORD'] = 'Bronco2022*'
+#app.config['MAIL_USE_TLS'] = 'False'
+app.config['MAIL_USE_SSL'] = 'True'
+mail = Mail(app)
+
+
+#   Create a token for security purposes
+#   add the token to the url link
+#   Check if email matches in the Database
+#   If email is in database then send message to email address provided
+#   redirect to the update password page
+
+@app.route('/send_message', methods=['POST'])
+def send_email():
+    msg = Message('Hello', sender='brandon.andrew.reed@gmail.com', recipients=['brandon.andrew.reed@gmail.com'])
+    msg.body = "Yay it works!"
+    mail.send(msg)
+    return 'Sent'       
+
 
 
 @app.route('/')
