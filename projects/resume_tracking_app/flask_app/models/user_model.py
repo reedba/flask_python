@@ -35,7 +35,15 @@ class User:
     def get_by_email(cls, data):
         is_valid = True
         query = "SELECT * FROM users WHERE email = %(email)s;"
-        print(query, "*"*60)
+        results = connectToMySQL(cls.db).query_db(query, data)
+        if len(results) < 1:
+            return False
+        return cls(results[0])
+
+    @classmethod
+    def get_reset_email(cls, data):
+        is_valid = True
+        query = "SELECT * FROM users WHERE email = %(email)s;"
         results = connectToMySQL(cls.db).query_db(query, data)
         if len(results) < 1:
             return False
@@ -46,6 +54,13 @@ class User:
         query = "SELECT * FROM users WHERE id = %(id)s;"
         results = connectToMySQL(cls.db).query_db(query,data)
         return cls(results[0])
+
+    @classmethod
+    def get_one(cls,id):
+        query  = "SELECT * FROM users WHERE id = %(id)s;"
+        result = connectToMySQL(cls.db).query_db(query, {'id':id})
+        print(result, "$"*60)
+        return cls(result[0])
 
     @staticmethod
     def validate_register(user):
