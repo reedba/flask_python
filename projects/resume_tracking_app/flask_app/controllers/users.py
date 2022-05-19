@@ -36,25 +36,36 @@ def send_email():
         flash("Email does not exist", "register")
         return redirect('/')
     if request.form['email'] == user.email:
-        msg = Message('Confirm Email', sender='brandon.andrew.reed@gmail.com', recipients=['jonip46370@dmosoft.com'])
-        link = url_for('update_password_page' ,id = user.id, token=token, _external=True)
+        msg = Message('pdate Email', sender='brandon.andrew.reed@gmail.com', recipients=['fogido1585@dufeed.com'])
+        link = url_for('update_password_link' ,id = user.id, token=token, _external=True)
         msg.body = "Yay it works!{}".format(link)
         mail.send(msg)
         return 'Sent'       
 
 @app.route('/update_password_page/<int:id>/<token>')
-def update_password_page(id, token):
+def update_password_link(id, token):
     user = User.get_one(id)
     print(user.first_name + " " + user.last_name)
     try:
         email = s.loads(token, salt=app.secret_key, max_age=1000)
     except SignatureExpired:
         return '<h1>The token is expired</h1>'
-    return render_template('')
+    return render_template('update_password_page.html', user = user)
+
+@app.route('/update_password/<int:id>')
+def update_password(id):
+    if not User.validate_register(request.form):
+        return redirect('/update_password/<int:id>')
+    pass
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+#@app.route('/update_password_page/<int:id>')
+#def update_password_page(id):
+#    user = User.get_one(id)
+#    return render_template('update_password_page.html', user=user)
 
 @app.route('/login_page')
 def login_page():
