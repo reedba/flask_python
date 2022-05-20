@@ -1,0 +1,96 @@
+body{
+    background-color:#16697a;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+}
+
+#main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#title{
+    color: #ffa62b;
+    font-family: 'Patrick Hand', cursive;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+#register{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: #ffa62b;
+    font-family: 'Patrick Hand', cursive;
+    letter-spacing: 2px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: auto;
+    background-color:#ede7e3;
+    padding: 10px;
+    border-radius: 23px;
+    background: #16697a;
+    box-shadow:  -28px -28px 56px #11505d,
+                28px 28px 56px #1b8297;
+}
+input{
+    margin: 0px 10px 10px 10px;
+    height: 25px;
+    width: auto;
+    border-radius: 5px;
+}
+
+label{
+    margin: 10px 10px 0px 10px;
+    color: #ffa62b;
+    font-size: medium;
+    font-weight: bold;
+    font-family: 'Patrick Hand', cursive;
+    letter-spacing: 2px;
+    
+    
+}
+
+button{
+    margin: 10px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: #ffa62b;
+    font-family: 'Patrick Hand', cursive;
+    font-weight: bold;
+}
+
+a{
+    margin-left:10px;
+    text-decoration: none;
+    color: #ffa62b;
+    
+}
+
+p{
+    color: #ffa62b;
+    margin-left:10px;  
+}
+
+#main_reset{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#main_reset{
+    display: flex;
+    height: 825px;
+}
+
+#message{
+    color: red;
+}

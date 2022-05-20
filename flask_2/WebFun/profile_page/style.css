@@ -1,0 +1,116 @@
+#navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: black;
+    width: 100%;
+}
+
+#nav_links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+#nav_links > h1, a{
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+
+button{
+    margin: 10px;
+    color: white;
+    background-color: #6fc1cf;
+    border: none;
+}
+
+#main{
+    width: 80%;
+}
+
+#profile_card{
+    height: 450px;
+    width: 100%;
+    border: grey solid 5px;
+    margin-top:20px;
+}
+
+#banner{
+    background-color: #6fc1cf;
+    height: 110px;
+}
+
+#jane{
+    height: 120px;
+    border-radius: 50%;
+    position: absolute;
+    top:140px;
+    left: 30px;
+    border: solid black 5px;
+    
+}
+
+#marker{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#marker > img{
+    height: 20px;
+    margin-right: 10px;
+}
+
+#name{
+    margin-top: 70px;
+    margin-left: 30px;
+    margin-bottom: 0px;
+}
+
+#user_dets{
+    width: 800px;
+    margin-left: 30px;
+}
+
+#edit{
+    display: flex;
+    margin-left: 30px;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+#edit > a{
+    text-decoration: underline;
+    color: blue;
+    
+}
+
+#edit > img{
+    width: auto;
+    height: 18px;
+
+}
+
+#education{
+    border: grey solid 5px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#education > h2{
+    
+    background-color: #333333;
+    color: white;
+    padding-left: 30px;
+    padding-top: 10px;
+    margin: 0px;
+    height: 40px;
+}
+
+#education > div{
+    padding-left: 30px;
+}
