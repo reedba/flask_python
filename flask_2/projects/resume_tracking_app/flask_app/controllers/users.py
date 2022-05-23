@@ -71,6 +71,10 @@ def index():
 def login_page():
     return render_template('login.html')
 
+@app.route('/navigation')
+def navigation():
+    return render_template('navigation.html')
+
 @app.route('/reset_email')
 def reset_email():
     return render_template('reset_email.html')
