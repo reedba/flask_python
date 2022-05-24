@@ -13,7 +13,7 @@ mail = Mail(app)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'brandon.andrew.reed@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Bronco2022*'
+app.config['MAIL_PASSWORD'] = ''
 #app.config['MAIL_USE_TLS'] = 'False'
 app.config['MAIL_USE_SSL'] = 'True'
 mail = Mail(app)
@@ -70,6 +70,10 @@ def index():
 @app.route('/login_page')
 def login_page():
     return render_template('login.html')
+
+@app.route('/navigation')
+def navigation():
+    return render_template('navigation.html')
 
 @app.route('/reset_email')
 def reset_email():
