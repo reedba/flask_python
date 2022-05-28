@@ -1,4 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+
 import re
 
 
@@ -59,7 +60,6 @@ class User:
     def get_one(cls,id):
         query  = "SELECT * FROM users WHERE id = %(id)s;"
         result = connectToMySQL(cls.db).query_db(query, {'id':id})
-        print(result, "$"*60)
         return cls(result[0])
 
     @staticmethod

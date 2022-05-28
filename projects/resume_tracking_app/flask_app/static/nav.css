@@ -1,9 +1,16 @@
+
+/*#ffa62b
+#ede7e3
+#82c0cc
+#489fb5
+#16697a*/
+
 body{
     padding: 0px;
     margin:0px;
     width: 100%;
     height: 100%;
-    background-color:#16697a;
+    background-color:#ede7e3;
 }
 
 #welcome{

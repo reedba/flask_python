@@ -2,6 +2,7 @@ from flask_bcrypt import Bcrypt
 from flask import render_template, flash, session, request, redirect, url_for
 from flask_app import app
 from flask_app.models.user_model import User
+from flask_app.models.company_model import Company
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 
@@ -13,7 +14,7 @@ mail = Mail(app)
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'brandon.andrew.reed@gmail.com'
-app.config['MAIL_PASSWORD'] = ''
+app.config['MAIL_PASSWORD'] = 'Bronco2022%'
 #app.config['MAIL_USE_TLS'] = 'False'
 app.config['MAIL_USE_SSL'] = 'True'
 mail = Mail(app)
@@ -30,13 +31,11 @@ def send_email():
     user = User.get_reset_email(request.form)
     email = request.form['email']
     token = s.dumps(email, salt=app.secret_key)
-    print(email)
-    print(token)
     if not user:
         flash("Email does not exist", "register")
         return redirect('/')
     if request.form['email'] == user.email:
-        msg = Message('pdate Email', sender='brandon.andrew.reed@gmail.com', recipients=['fogido1585@dufeed.com'])
+        msg = Message('Update Email', sender='brandon.andrew.reed@gmail.com', recipients=['wenagin199@steamoh.com'])
         link = url_for('update_password_link' ,id = user.id, token=token, _external=True)
         msg.body = "Yay it works!{}".format(link)
         mail.send(msg)
@@ -45,7 +44,6 @@ def send_email():
 @app.route('/update_password_page/<int:id>/<token>')
 def update_password_link(id, token):
     user = User.get_one(id)
-    print(user.first_name + " " + user.last_name)
     try:
         email = s.loads(token, salt=app.secret_key, max_age=1000)
     except SignatureExpired:
@@ -61,6 +59,16 @@ def update_password(id):
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route("/add_company", methods=['POST'])
+def add_company():
+    data = {
+        "company_name": request.form['company_name'],
+        "website": request.form['website'],
+        "user_id": request.form['user_id'],
+    }
+    Company.save_company(data)
+    return redirect('/dashboard')
 
 #@app.route('/update_password_page/<int:id>')
 #def update_password_page(id):
@@ -119,7 +127,7 @@ def dashboard():
     data = {
         'id':session['user_id']
     }
-    return render_template("dashboard.html", user=User.get_by_id(data))
+    return render_template("dashboard.html", user=User.get_by_id(data), companies = Company.show_user_companies(data))
 
 @app.route('/logout')
 def logout():
